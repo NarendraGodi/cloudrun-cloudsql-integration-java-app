@@ -1,6 +1,7 @@
 steps:
 # Build the container image
-- name: 'gcr.io/cloud-builders/mvn'
+- name: maven:3.3-jdk-8
+  entrypoint: mvn
   args: ['clean package com.google.cloud.tools:jib-maven-plugin:2.8.0:build -Dimage=gcr.io/testingiamproject-369302/build-run-image:v1 -DskipTests']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
